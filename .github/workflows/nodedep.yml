@@ -1,23 +1,11 @@
-name: Node.js CI
+name: CI on Self-Hosted
 on:
-  - push
+  push:
+    branches: [ main ]
 jobs:
   build:
     runs-on: glpi-server
-    strategy:
-      matrix:
-        node-version:
-          - 14
-          - 16
-          - 18
-    
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - run: echo "nonjou"
-      
-      
+      - uses: actions/checkout@v4
+      - name: Run a script
+        run: echo "Running on my self-hosted runner!"
